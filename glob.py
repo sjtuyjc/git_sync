@@ -1,0 +1,9 @@
+user = 'admin'
+localhost = '192.168.0.210:29418/'
+module_list = ['dlc_fullchip', 'dlc_core', 'dlc_pgx', 'dlc_xys', 'dlc_nws', 'dlc_fxc', 'dlc_htt', 'dlc_klm', 'dlc_kts', 'dlc_lyp', 'dlc_pad']
+dic = {'dlc_fullchip': 'fullchip', 'dlc_core': 'core', 'dlc_pgx': 'pgx', 'dlc_xys': 'xys', 'dlc_nws': 'nws', 'dlc_fxc': 'fxc', 'dlc_htt': 'htt', 'dlc_klm': 'klm', 'dlc_kts': 'kts', 'dlc_lyp': '', 'dlc_pad': ''}
+dir_recover = ['tools', 'verif/uvcs']
+#dir_to_sync = ['common']
+dir_to_sync = ['common', 'tools', 'verif/uvcs']
+module_wkspc = []
+file_wkspc = {}
