@@ -1,3 +1,4 @@
+#merge specific dirs in all different repos
 import os
 import re
 import glob
@@ -18,6 +19,7 @@ for i in glob.module_list:
   names[i] = Module(i)
   glob.module_wkspc.append(names[i]) 
 
+#after merge where to checkout the dirs and files
 def checkout(dir, l):
   for i in dir.files.values():
     if len(i.editor) == 0:
@@ -32,6 +34,7 @@ def checkout(dir, l):
     else:
       checkout(i, l)
 
+#make an empty repo at local and return the module
 def git_init(repo):
   os.mkdir(repo)
   tmp = Module(repo, True)

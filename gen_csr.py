@@ -1,3 +1,4 @@
+#generate csr files for all modules except fullchip and core
 import os
 import re
 import glob

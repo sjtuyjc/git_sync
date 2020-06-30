@@ -1,3 +1,4 @@
+#class Dir
 import os
 import glob
 import hashlib
@@ -15,6 +16,7 @@ class Dir(object):
     self.files = {}
     self.subdirs = {}
 
+#print the info of dir
   def print_dir(self):
     print('name:' + self.name + '\tpath:' + self.path + '\teditor:', end = '')
     print(self.editor, end = '\t')
@@ -41,6 +43,7 @@ class Dir(object):
     self.print_dir()
     print('')
 
+#collect the files and subdirs in the dir
   def dir_init(self):
     os.chdir(os.path.join(self.root_path, self.path))
     for i in os.listdir('.'):
@@ -52,6 +55,7 @@ class Dir(object):
       i.dir_init()
     os.chdir(self.root_path)
 
+#compare two dirs and merge the editor
   def merge_with(self, dir):
     dcmp = dircmp(os.path.join(self.root_path, self.path), os.path.join(dir.root_path, dir.path))
     for i in dcmp.left_only + dcmp.common_funny:
@@ -93,6 +97,7 @@ class Dir(object):
         self.subdirs[i] = dir.subdirs.get(i)
         self.subdirs.get(i).root_path = self.root_path
 
+#print info of compare between two dirs
   def compare_report(self, dir):
     print('in ' + self.path + ':')
     edi = list(dir.editor)[0]
@@ -116,7 +121,8 @@ class Dir(object):
     print('compare ' + tmp_path1 + ' with ' + tmp_path2)
     self.compare_report(dir)
     print('')
-    
+
+#if there is more than one editors or files deleted, turn enable to false    
   def check_change(self):
     for i in self.files.values():
       if len(i.editor) > 1:
@@ -137,6 +143,7 @@ class Dir(object):
       if i.able == False:
         self.able = False
 
+#print the info of reasons why merge failed
   def conflict_log(self):
     if self.able == False:
       if len(self.delete) > 0:
